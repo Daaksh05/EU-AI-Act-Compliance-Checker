@@ -1,0 +1,4 @@
+Model: HiringScreen v0.3
+Purpose: Automated screening for initial hiring decisions.
+Data: Resume dataset (2015–2023) with demographic attributes.
+Notes: No formal bias mitigation documented.

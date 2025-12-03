@@ -1,0 +1,25 @@
+# Core functionality
+python-dateutil
+requests
+
+# Optional: LLM mock tests (basic) – no heavy models downloaded
+transformers>=4.30.0
+huggingface-hub
+
+# Report generation
+markdown
+reportlab
+
+# Useful for structured data and future extensions
+numpy
+pandas
+
+# Optional Warnings + validation
+pydantic
+
+# If you run a REST API later
+fastapi
+uvicorn
+
+# YAML support (for rules)
+pyyaml

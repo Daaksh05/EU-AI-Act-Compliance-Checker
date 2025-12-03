@@ -1,0 +1,14 @@
+
+System: HiringScreen v0.3
+Risk Category: high_risk
+Compliance Score: 66.67%
+Generated: 2025-12-03T05:39:28.733723Z
+
+Description:
+Automated screening for initial hiring decisions.
+
+Missing Requirements:
+- human_oversight (high) | Human-in-loop oversight | Refs: Art 14
+
+Recommendations:
+- Fix human_oversight (high) requirement.
