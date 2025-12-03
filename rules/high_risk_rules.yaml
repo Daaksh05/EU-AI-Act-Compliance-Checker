@@ -1,0 +1,15 @@
+high_risk:
+  - id: human_oversight
+    requirement: Human oversight must be ensured
+    keyword: "human"
+    severity: high
+
+  - id: transparency
+    requirement: Must document transparency mechanisms
+    keyword: "transparency"
+    severity: medium
+
+  - id: data_quality
+    requirement: High-quality, bias-free training data
+    keyword: "data"
+    severity: medium
