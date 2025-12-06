@@ -27,7 +27,8 @@ def check_compliance(system_description: str):
     )
 
     return {
-        "category": category,
-        "compliance_score": score,
-        "missing_requirements": missing_requirements
-    }
+    "risk_category": "high-risk",
+    "explanation": "This system falls under ...",
+    "rules_triggered": ["rule_1", "rule_2"]
+}
+
