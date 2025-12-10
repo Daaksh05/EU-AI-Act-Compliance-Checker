@@ -64,9 +64,20 @@ This project simplifies regulatory adherence and risk management for AI systems.
 
 ---
 
-## 🧪 Virtual Environment Setup
-
-### ✅ Create Virtual Environment
+## 🚀 Quick Start (Example)
 
 ```bash
+# Clone repository
+git clone https://github.com/Daaksh05/EU-AI-Act-Compliance-Checker.git
+cd EU-AI-Act-Compliance-Checker
+
+# (Optional) Create & activate virtual environment
 python -m venv .venv
+.venv/Scripts/activate      # Windows PowerShell
+# or: source .venv/bin/activate  # Mac/Linux
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run server
+uvicorn app:app --reload
