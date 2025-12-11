@@ -81,3 +81,58 @@ pip install -r requirements.txt
 
 # Run server
 uvicorn app:app --reload
+
+# System Architecture – EU AI Act Compliance Checker
+
+This system evaluates AI models and applications against the regulatory
+requirements of the EU AI Act. The system consists of five major
+components:
+
+---
+
+## 🧩 1. Input Layer
+Accepts:
+- AI system description  
+- Model card  
+- Intended use-case  
+- Source URL or text metadata  
+
+---
+
+## 🧩 2. Metadata Extractor (`src/metadata_extractor.py`)
+Functions:
+- Extracts keywords  
+- Identifies domain (health, hiring, surveillance, etc.)
+- Detects whether the system fits high-risk categories  
+
+Output example:
+```json
+{
+  "domain": "hiring",
+  "high_risk_flag": true
+}
+
+
+### **📌 Content to paste:**
+
+```md
+# User Guide – EU AI Act Compliance Checker
+
+This guide explains how to install, run, and use the compliance
+checker application.
+
+---
+
+## 🔧 Requirements
+- Python 3.10+
+- pip
+- Git
+
+---
+
+## ✅ 1. Clone the Repository
+
+```bash
+git clone https://github.com/Daaksh05/EU-AI-Act-Compliance-Checker
+cd EU-AI-Act-Compliance-Checker
+
