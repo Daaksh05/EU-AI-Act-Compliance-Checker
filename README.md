@@ -135,4 +135,44 @@ checker application.
 ```bash
 git clone https://github.com/Daaksh05/EU-AI-Act-Compliance-Checker
 cd EU-AI-Act-Compliance-Checker
+ 
+## 📁 Project Structure
 
+EU-AI-Act-Compliance-Checker/
+│── app.py                     # FastAPI backend  
+│── requirements.txt           # Python dependencies  
+│── README.md                  # Documentation  
+│── rules/
+│     └── high_risk_rules.yaml # EU AI Act rules  
+│── src/
+│     ├── __init__.py
+│     ├── compliance_engine.py # Main logic  
+│     ├── metadata_extractor.py
+│     ├── risk_classifier.py
+│     └── report_generator.py  # PDF report creator
+│── docs/
+      └── project_report.pdf   # You can upload your final PDF
+## 📘 API Documentation
+
+FastAPI automatically provides interactive API docs:
+
+- Swagger UI: http://127.0.0.1:8000/docs  
+- Redoc UI:   http://127.0.0.1:8000/redoc  
+
+## ⚙️ How the Compliance Engine Works
+
+1. **User submits an AI system description.**
+2. System extracts keywords → classifies risk level:
+   - Unacceptable
+   - High risk
+   - Limited risk
+   - Minimal risk
+3. Loads rules from `high_risk_rules.yaml`.
+4. For each EU AI Act requirement:
+   - Checks if the system meets the requirement.
+   - Marks each item as ✔ compliant or ❌ missing.
+5. Generates a final JSON + PDF report:
+   - Risk category  
+   - Compliance score  
+   - Missing requirements  
+   - Recommendations  
