@@ -18,3 +18,8 @@ build/
 # IDE/editor settings
 .vscode/
 .idea/
+# Node / Frontend
+node_modules/
+frontend/node_modules/
+.next/
+dist/
