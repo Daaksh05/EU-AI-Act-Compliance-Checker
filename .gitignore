@@ -1,25 +1,33 @@
-﻿# Virtual environment
+﻿# =========================
+# Python
+# =========================
 .venv/
 venv/
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
-
-# OS files
-.DS_Store
-Thumbs.db
-
-# Python packaging
-dist/
-build/
 *.egg-info/
+build/
+dist/
 
-# IDE/editor settings
-.vscode/
-.idea/
+# =========================
 # Node / Frontend
+# =========================
 node_modules/
 frontend/node_modules/
 .next/
-dist/
+out/
+coverage/
+
+# =========================
+# IDE / Editor
+# =========================
+.vscode/
+.idea/
+
+# =========================
+# OS Files
+# =========================
+.DS_Store
+Thumbs.db
