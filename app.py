@@ -1,3 +1,4 @@
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi import FastAPI
 from fastapi.responses import FileResponse
 from pydantic import BaseModel
@@ -12,6 +13,14 @@ app = FastAPI(
     version="1.0.0",
     description="Runs compliance checks and generates a downloadable PDF report."
 )
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 
 # ----------------------------
 # Request Model
@@ -62,9 +71,9 @@ def home():
     return {"message": "EU AI Act Compliance Checker — API running"}
 
 
-# ----------------------------
+
 # Main API Endpoint
-# ----------------------------
+
 @app.post("/check")
 def check_system(data: AISystem):
     result = check_compliance(data.description)
