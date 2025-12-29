@@ -1,35 +1,60 @@
-# src/risk_classifier.py
+def classify_risk(description: str) -> dict:
+    desc = description.lower()
 
-import re
+    risk_score = 0
+    factors = []
 
-HIGH_KEYWORDS = {
-    'credit': 2, 'loan': 2, 'hiring': 3, 'employment': 3,
-    'medical': 3, 'health': 3, 'biometric': 3,
-}
+    if "recruitment" in desc or "hiring" in desc:
+        risk_score += 30
+        factors.append("Employment decision-making")
 
-LIMITED_KEYWORDS = {
-    'chatbot': 2, 'recommend': 1, 'assistant': 1
-}
+    if "automated" in desc:
+        risk_score += 20
+        factors.append("Fully automated decision-making")
 
-PROHIBITED_KEYWORDS = {
-    'social scoring': 5, 'real-time biometric': 5, 'mass surveillance': 5
-}
+    if "personal data" in desc or "resume" in desc:
+        risk_score += 20
+        factors.append("Uses personal data")
 
-def _score(text, keywords):
-    score = 0
-    text = text.lower()
-    for k, w in keywords.items():
-        if re.search(r'\b' + re.escape(k) + r'\b', text):
-            score += w
-    return score
+    if "biometric" in desc or "facial" in desc:
+        risk_score += 30
+        factors.append("Biometric processing")
 
-def classify_risk(description):
-    if not description:
-        return "minimal_risk"
-    if _score(description, PROHIBITED_KEYWORDS) >= 5:
-        return "prohibited"
-    if _score(description, HIGH_KEYWORDS) >= 3:
-        return "high_risk"
-    if _score(description, LIMITED_KEYWORDS) >= 2:
-        return "limited_risk"
-    return "minimal_risk"
+    # Risk category
+    if risk_score >= 60:
+        category = "high-risk"
+        articles = [
+            "Article 6 – Classification of High-Risk AI Systems",
+            "Article 10 – Data and Data Governance",
+            "Article 14 – Human Oversight"
+        ]
+        recommendations = [
+            "Ensure meaningful human oversight",
+            "Maintain transparent training data documentation",
+            "Perform regular bias and fairness audits",
+            "Enable audit logging and traceability"
+        ]
+    elif risk_score >= 30:
+        category = "limited-risk"
+        articles = [
+            "Article 52 – Transparency Obligations"
+        ]
+        recommendations = [
+            "Inform users they are interacting with AI",
+            "Provide explanations for automated outputs"
+        ]
+    else:
+        category = "minimal-risk"
+        articles = []
+        recommendations = [
+            "Voluntary code of conduct recommended"
+        ]
+
+    return {
+        "risk_category": category,
+        "risk_score": risk_score,
+        "risk_factors": factors,
+        "articles": articles,
+        "recommendations": recommendations,
+        "explanation": f"The system is classified as {category} based on detected risk indicators."
+    }
