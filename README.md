@@ -175,4 +175,10 @@ FastAPI automatically provides interactive API docs:
    - Risk category  
    - Compliance score  
    - Missing requirements  
-   - Recommendations  
+   - Recommendations
+
+## Generated Reports
+Compliance reports are generated dynamically as PDF files and stored locally
+in the `reports/` directory. These files are intentionally excluded from
+version control.
+
