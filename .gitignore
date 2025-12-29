@@ -13,3 +13,8 @@ reports/
 Thumbs.db
 .vscode/
 .idea/
+# Node / Frontend
+node_modules/
+frontend/node_modules/
+.next/
+
