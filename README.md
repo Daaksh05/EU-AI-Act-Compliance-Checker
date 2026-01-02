@@ -171,7 +171,7 @@ FastAPI automatically provides interactive API docs:
 4. For each EU AI Act requirement:
    - Checks if the system meets the requirement.
    - Marks each item as ✔ compliant or ❌ missing.
-5. Generates a final JSON + PDF report:
+5. Generates a final JSON + PDF downloadable report:
    - Risk category  
    - Compliance score  
    - Missing requirements  
