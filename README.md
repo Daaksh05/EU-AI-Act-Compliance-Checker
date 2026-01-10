@@ -182,3 +182,13 @@ Compliance reports are generated dynamically as PDF files and stored locally
 in the `reports/` directory. These files are intentionally excluded from
 version control.
 
+## ⚠️ Limitations
+
+- Static rules can't detect deployment drift
+- Manual encoding doesn't scale to multiple jurisdictions
+- Point-in-time analysis misses operational risks
+
+## 🔮 Future Research
+
+Investigating continuous compliance monitoring and context-aware governance. See research proposal for details.
+
