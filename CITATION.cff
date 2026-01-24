@@ -11,14 +11,14 @@ authors:
     email: "daakshayanidaakshayani@gmail.com"
     affiliation: "Sri Shakthi Institute of Engineering and Technology"
 
-abstract: "An automated system for evaluating compliance of artificial intelligence systems with the European Union Artificial Intelligence Act. The tool classifies AI risk levels, validates regulatory obligations, and generates structured compliance reports."
+abstract: "An automated system that evaluates compliance of artificial intelligence systems with the European Union Artificial Intelligence Act by classifying risk levels, validating regulatory obligations, and generating structured compliance reports."
 
 keywords:
   - EU AI Act
   - AI governance
   - regulatory compliance
-  - risk classification
   - legal tech
+  - risk classification
 
 license: MIT
 repository-code: "https://github.com/Daaksh05/EU-AI-Act-Compliance-Checker"
