@@ -2,9 +2,8 @@ cff-version: 1.2.0
 message: "If you use this software, please cite it as below."
 type: software
 title: "EU AI Act Compliance Checker: Automated Legal Risk Assessment for Artificial Intelligence Systems"
-version: 1.0.0
-date-released: 2026-01-15
-abstract: "An automated web-based system that evaluates whether AI applications comply with EU AI Act regulations. The system accepts AI system descriptions as input, classifies risk levels, validates regulatory obligations, and generates structured compliance reports in PDF format."
+version: 1.0.1
+date-released: 2026-01-24
 
 authors:
   - family-names: "N S"
@@ -12,25 +11,15 @@ authors:
     email: "daakshayanidaakshayani@gmail.com"
     affiliation: "Sri Shakthi Institute of Engineering and Technology"
 
+abstract: "An automated system for evaluating compliance of artificial intelligence systems with the European Union Artificial Intelligence Act. The tool classifies AI risk levels, validates regulatory obligations, and generates structured compliance reports."
+
 keywords:
-  - AI governance
   - EU AI Act
+  - AI governance
   - regulatory compliance
-  - automated risk assessment
-  - legal tech
-  - artificial intelligence
-  - compliance automation
   - risk classification
+  - legal tech
 
 license: MIT
 repository-code: "https://github.com/Daaksh05/EU-AI-Act-Compliance-Checker"
 url: "https://github.com/Daaksh05/EU-AI-Act-Compliance-Checker"
-
-preferred-citation:
-  type: software
-  title: "EU AI Act Compliance Checker: Automated Legal Risk Assessment for Artificial Intelligence Systems"
-  authors:
-    - family-names: "N S"
-      given-names: "Daakshayani"
-  year: 2026
-  notes: "Research project for Master's Programme in Artificial Intelligence & Society"
