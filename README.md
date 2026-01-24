@@ -1,195 +1,201 @@
-# ✅ EU-AI-ACT-COMPLIANCE-CHECKER
+# EU AI Act Compliance Checker
 
-**Ensure AI Compliance, Empower Responsible Innovation**
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.XXXXXXX.svg)](https://doi.org/10.5281/zenodo.XXXXXXX)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 
-![Last Commit](https://img.shields.io/github/last-commit/Daaksh05/EU-AI-Act-Compliance-Checker)
-![Python](https://img.shields.io/badge/python-100%25-blue)
-![Languages](https://img.shields.io/badge/languages-1-orange)
+**Automated Legal Risk Assessment for Artificial Intelligence Systems**
 
-Built with the tools and technologies:
+An automated web-based system that evaluates whether AI applications comply with EU AI Act regulations. The system accepts AI system descriptions as input, classifies risk levels, validates regulatory obligations, and generates structured compliance reports in PDF format.
 
-![JSON](https://img.shields.io/badge/JSON-black)
-![Markdown](https://img.shields.io/badge/Markdown-black)
-![FastAPI](https://img.shields.io/badge/FastAPI-green)
-![NumPy](https://img.shields.io/badge/NumPy-blue)
-![Python](https://img.shields.io/badge/Python-blue)
-![Pandas](https://img.shields.io/badge/Pandas-purple)
-![Pydantic](https://img.shields.io/badge/Pydantic-red)
-![YAML](https://img.shields.io/badge/YAML-darkred)
+## 🎯 Key Features
 
----
+- **Automated Risk Classification**: Classifies AI systems into EU AI Act risk categories (Unacceptable, High, Limited, Minimal)
+- **Regulatory Validation**: Checks compliance against YAML-encoded legal requirements
+- **PDF Report Generation**: Creates professional compliance reports with detailed findings
+- **REST API Interface**: FastAPI-based endpoints with automatic Swagger documentation
+- **Modular Architecture**: Clean separation of concerns for maintainability and extensibility
 
-## 📑 Table of Contents
+## 🏗️ System Architecture
 
-- [Overview](#overview)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-- [Usage](#usage)
-- [Testing](#testing)
-- [Features](#features)
-- [Project Structure](#project-structure)
-- [Roadmap](#roadmap)
-- [Contribution](#contribution)
-- [License](#license)
-- [Acknowledgements](#acknowledgements)
+```
+┌─────────────────┐
+│   User Input    │
+│ (AI System Desc)│
+└────────┬────────┘
+         │
+         ▼
+┌─────────────────┐
+│  FastAPI Layer  │
+└────────┬────────┘
+         │
+         ▼
+┌─────────────────┐
+│  Compliance     │
+│  Engine         │
+└────┬────────────┘
+     │
+     ├──> Risk Classifier
+     ├──> Rules Validator
+     └──> Report Generator
+         │
+         ▼
+    ┌──────────┐
+    │PDF Report│
+    └──────────┘
+```
 
----
+## 🚀 Quick Start
 
-## 📌 Overview
+### Prerequisites
 
-EU-AI-Act-Compliance-Checker is a comprehensive developer tool designed to facilitate AI compliance with the **European Union Artificial Intelligence Act (2024)**. It offers automated risk classification, regulatory verification, bias and safety testing for large language models, and generates detailed compliance reports to support responsible AI deployment.
+- Python 3.8 or higher
+- pip package manager
+- Virtual environment (recommended)
 
----
-
-### ❓ Why EU-AI-Act-Compliance-Checker?
-
-This project simplifies regulatory adherence and risk management for AI systems. The core features include:
-
-- 🧪 **Risk Assessment** – Classifies AI risks and verifies compliance with EU standards  
-- 📄 **Automated Reporting** – Generates detailed, downloadable PDF and textual reports  
-- 🔍 **Bias & Safety Testing** – Performs lightweight evaluations of LLM safety and bias metrics  
-- 🔗 **API Integration** – Provides seamless endpoints for AI system evaluations  
-- 🗂️ **Metadata Extraction** – Structures model documentation for transparency  
-- 🛡️ **Regulatory Rules Support** – Supports EU high-risk compliance validation  
-
----
-
-## ⚠️ Limitations
-
-- Static rules can't detect deployment drift
-- Manual encoding doesn't scale to multiple jurisdictions
-- Point-in-time analysis misses operational risks
-
-## 🔮 Future Research
-
-Investigating continuous compliance monitoring and context-aware governance. See research proposal for details.
-
-## 🚀 Getting Started
-
-### ✅ Prerequisites
-
-- **Programming Language:** Python  
-- **Package Manager:** pip  
-
----
-
-## 🚀 Quick Start (Example)
+### Installation
 
 ```bash
-# Clone repository
+# Clone the repository
 git clone https://github.com/Daaksh05/EU-AI-Act-Compliance-Checker.git
 cd EU-AI-Act-Compliance-Checker
 
-# (Optional) Create & activate virtual environment
-python -m venv .venv
-.venv/Scripts/activate      # Windows PowerShell
-# or: source .venv/bin/activate  # Mac/Linux
+# Create virtual environment
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
 
 # Install dependencies
 pip install -r requirements.txt
+```
 
-# Run server
-uvicorn app:app --reload
-
-# System Architecture – EU AI Act Compliance Checker
-
-This system evaluates AI models and applications against the regulatory
-requirements of the EU AI Act. The system consists of five major
-components:
-
----
-
-## 🧩 1. Input Layer
-Accepts:
-- AI system description  
-- Model card  
-- Intended use-case  
-- Source URL or text metadata  
-
----
-
-## 🧩 2. Metadata Extractor (`src/metadata_extractor.py`)
-Functions:
-- Extracts keywords  
-- Identifies domain (health, hiring, surveillance, etc.)
-- Detects whether the system fits high-risk categories  
-
-Output example:
-```json
-{
-  "domain": "hiring",
-  "high_risk_flag": true
-}
-
-
-### **📌 Content to paste:**
-
-```md
-# User Guide – EU AI Act Compliance Checker
-
-This guide explains how to install, run, and use the compliance
-checker application.
-
----
-
-## 🔧 Requirements
-- Python 3.10+
-- pip
-- Git
-
----
-
-## ✅ 1. Clone the Repository
+### Running the Application
 
 ```bash
-git clone https://github.com/Daaksh05/EU-AI-Act-Compliance-Checker
-cd EU-AI-Act-Compliance-Checker
- 
+# Start the FastAPI server
+uvicorn app:app --reload
+
+# Access the API documentation
+# Open browser: http://localhost:8000/docs
+```
+
+### Example Usage
+
+```python
+import requests
+
+# Prepare AI system description
+system_description = {
+    "name": "Resume Screening AI",
+    "description": "AI system for automated resume screening in recruitment",
+    "domain": "recruitment",
+    "purpose": "candidate screening"
+}
+
+# Call compliance API
+response = requests.post(
+    "http://localhost:8000/assess-compliance",
+    json=system_description
+)
+
+# Get compliance report
+report = response.json()
+print(f"Risk Level: {report['risk_level']}")
+print(f"Compliance Status: {report['status']}")
+```
+
 ## 📁 Project Structure
 
+```
 EU-AI-Act-Compliance-Checker/
-│── app.py                     # FastAPI backend  
-│── requirements.txt           # Python dependencies  
-│── README.md                  # Documentation  
-│── rules/
-│     └── high_risk_rules.yaml # EU AI Act rules  
-│── src/
-│     ├── __init__.py
-│     ├── compliance_engine.py # Main logic  
-│     ├── metadata_extractor.py
-│     ├── risk_classifier.py
-│     └── report_generator.py  # PDF report creator
-│── docs/
-      └── project_report.pdf   # You can upload your final PDF
-## 📘 API Documentation
+├── app.py                      # FastAPI application entry point
+├── compliance_engine.py        # Core compliance evaluation logic
+├── risk_classifier.py          # Risk categorization module
+├── report_generator.py         # PDF report generation
+├── requirements.txt            # Python dependencies
+├── rules/
+│   └── eu_ai_rules.yaml       # Legal requirements database
+├── CITATION.cff               # Citation metadata
+├── .zenodo.json              # Zenodo metadata
+├── LICENSE                    # MIT License
+└── README.md                  # This file
+```
 
-FastAPI automatically provides interactive API docs:
+## 🔬 Research Context
 
-- Swagger UI: http://127.0.0.1:8000/docs  
-- Redoc UI:   http://127.0.0.1:8000/redoc  
+This project was developed as part of a research investigation into AI governance challenges, specifically:
 
-## ⚙️ How the Compliance Engine Works
+- **Deployment Drift Detection**: How AI systems evolve post-deployment
+- **Context-Aware Risk Assessment**: Moving beyond static categorization
+- **Continuous Compliance Monitoring**: Frameworks for ongoing governance
 
-1. **User submits an AI system description.**
-2. System extracts keywords → classifies risk level:
-   - Unacceptable
-   - High risk
-   - Limited risk
-   - Minimal risk
-3. Loads rules from `high_risk_rules.yaml`.
-4. For each EU AI Act requirement:
-   - Checks if the system meets the requirement.
-   - Marks each item as ✔ compliant or ❌ missing.
-5. Generates a final JSON + PDF downloadable report:
-   - Risk category  
-   - Compliance score  
-   - Missing requirements  
-   - Recommendations
+The research proposes extending static compliance checking to adaptive, context-aware governance systems that respond to real-world deployment patterns.
 
-## Generated Reports
-Compliance reports are generated dynamically as PDF files and stored locally
-in the `reports/` directory. These files are intentionally excluded from
-version control.
+## 📊 Technology Stack
 
+| Component | Technology |
+|-----------|-----------|
+| Backend Framework | FastAPI |
+| API Server | Uvicorn |
+| Programming Language | Python 3.8+ |
+| Rules Storage | YAML |
+| Report Generation | ReportLab |
+| API Documentation | Swagger/OpenAPI |
 
+## 📖 Citation
+
+If you use this software in your research or project, please cite it as:
+
+```bibtex
+@software{daakshayani2026euai,
+  author = {Daakshayani N S},
+  title = {EU AI Act Compliance Checker: Automated Legal Risk Assessment for Artificial Intelligence Systems},
+  year = {2026},
+  url = {https://github.com/Daaksh05/EU-AI-Act-Compliance-Checker},
+  doi = {10.5281/zenodo.XXXXXXX},
+  version = {1.0.0}
+}
+```
+
+**APA Format:**
+```
+Daakshayani, N. S. (2026). EU AI Act Compliance Checker: Automated Legal Risk 
+Assessment for Artificial Intelligence Systems (Version 1.0.0) [Computer software]. 
+https://doi.org/10.5281/zenodo.XXXXXXX
+```
+
+## 📄 Related Publications
+
+- **Research Proposal**: "EU AI Act Compliance Checker - Automated Legal Risk Assessment for Artificial Intelligence Systems" (January 2026)
+- **Journal Article**: "EU AI Act Compliance Checker: Automated Legal Risk Assessment for AI Systems" (Submitted to MDPI AI Journal)
+- **arXiv Preprint**: arXiv:XXXX.XXXXX
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit issues, fork the repository, and create pull requests.
+
+## 📜 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 👤 Author
+
+**Daakshayani N S**
+- Institution: Sri Shakthi Institute of Engineering and Technology, Coimbatore
+- Email: daakshayanidaakshayani@gmail.com
+- GitHub: [@Daaksh05](https://github.com/Daaksh05)
+
+## 🙏 Acknowledgments
+
+- European Commission for the EU AI Act framework
+- Open-source developer community
+- FastAPI and Python ecosystem contributors
+
+## 📚 Further Reading
+
+- [EU AI Act Official Text](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:52021PC0206)
+- [FastAPI Documentation](https://fastapi.tiangolo.com/)
+- [AI Governance Research](https://www.oecd.org/digital/artificial-intelligence/)
+
+---
+
+**Note**: This is a research prototype demonstrating automated compliance checking concepts. For production deployment, additional security, scalability, and legal review are recommended.
