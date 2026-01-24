@@ -165,12 +165,6 @@ Assessment for Artificial Intelligence Systems (Version 1.0.4) [Computer softwar
 https://doi.org/10.5281/zenodo.18361776
 ```
 
-## 📄 Related Publications
-
-- **Research Proposal**: "EU AI Act Compliance Checker - Automated Legal Risk Assessment for Artificial Intelligence Systems" (January 2026)
-- **Journal Article**: "EU AI Act Compliance Checker: Automated Legal Risk Assessment for AI Systems" (Submitted to MDPI AI Journal)
-- **arXiv Preprint**: arXiv:XXXX.XXXXX
-
 ## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit issues, fork the repository, and create pull requests.
