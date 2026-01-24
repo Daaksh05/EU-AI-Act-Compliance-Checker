@@ -4,8 +4,7 @@
   "creators": [
     {
       "name": "Daakshayani N S",
-      "affiliation": "Sri Shakthi Institute of Engineering and Technology, Coimbatore, Tamil Nadu, India",
-      "orcid": "0000-0000-0000-0000"
+      "affiliation": "Sri Shakthi Institute of Engineering and Technology, Coimbatore, Tamil Nadu, India"
     }
   ],
   "access_right": "open",
@@ -42,7 +41,7 @@
     "European Commission. (2021). Proposal for a Regulation on Artificial Intelligence (AI Act)",
     "Veale, M., & Borgesius, F. Z. (2021). Demystifying the Draft EU Artificial Intelligence Act"
   ],
-  "version": "v1.0.0",
+  "version": "v1.0.1",
   "language": "eng",
   "communities": [
     {
