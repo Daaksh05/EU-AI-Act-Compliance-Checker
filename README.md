@@ -1,6 +1,8 @@
 # EU AI Act Compliance Checker
-
 🔗 **DOI:** https://doi.org/10.5281/zenodo.18361776
+
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18361776.svg)](https://doi.org/10.5281/zenodo.18361776)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 
@@ -147,20 +149,20 @@ If you use this software in your research or project, please cite it as:
 
 ```bibtex
 @software{daakshayani2026euai,
-  author = {Daakshayani N S},
-  title = {EU AI Act Compliance Checker: Automated Legal Risk Assessment for Artificial Intelligence Systems},
-  year = {2026},
-  url = {https://github.com/Daaksh05/EU-AI-Act-Compliance-Checker},
-  doi = {10.5281/zenodo.XXXXXXX},
-  version = {1.0.0}
+  author  = {Daakshayani, N. S.},
+  title   = {EU AI Act Compliance Checker: Automated Legal Risk Assessment for Artificial Intelligence Systems},
+  year    = {2026},
+  version = {1.0.4},
+  doi     = {10.5281/zenodo.18361776},
+  url     = {https://github.com/Daaksh05/EU-AI-Act-Compliance-Checker}
 }
 ```
 
 **APA Format:**
 ```
 Daakshayani, N. S. (2026). EU AI Act Compliance Checker: Automated Legal Risk 
-Assessment for Artificial Intelligence Systems (Version 1.0.0) [Computer software]. 
-https://doi.org/10.5281/zenodo.XXXXXXX
+Assessment for Artificial Intelligence Systems (Version 1.0.4) [Computer software]. 
+https://doi.org/10.5281/zenodo.18361776
 ```
 
 ## 📄 Related Publications
