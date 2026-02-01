@@ -1,18 +1,18 @@
-
-
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from reportlab.lib.pagesizes import A4
 from reportlab.pdfgen import canvas
-from reportlab.lib.units import inch
 from fastapi.responses import FileResponse
 import uuid
+import os
 from textwrap import wrap
 from typing import Dict
 
-import os
-from compliance_engine import analyze_ai_system
+try:
+    from .compliance_engine import analyze_ai_system
+except ImportError:
+    from compliance_engine import analyze_ai_system
 
 app = FastAPI()
 
@@ -123,14 +123,11 @@ def generate_pdf_report(description: str, result: dict) -> str:
 
 
 @app.post("/api/check")
-def check_system(data: AIInput):
+async def check_system(data: AIInput):
     result = analyze_ai_system(data.description)
-
     pdf_path = generate_pdf_report(data.description, result)
     report_id = os.path.basename(pdf_path).replace(".pdf", "")
-
     REPORT_STORE[report_id] = pdf_path
-
     return {
         "report_id": report_id,
         "analysis": result,
@@ -139,14 +136,21 @@ def check_system(data: AIInput):
 
 
 @app.get("/api/download/{report_id}")
-def download_report(report_id: str):
+async def download_report(report_id: str):
     pdf_path = REPORT_STORE.get(report_id)
-
     if not pdf_path or not os.path.exists(pdf_path):
         raise HTTPException(status_code=404, detail="Report not found")
-
     return FileResponse(
         pdf_path,
         media_type="application/pdf",
         filename=os.path.basename(pdf_path)
     )
+
+# Catch-all routes to handle potential subpath stripping by Vercel
+@app.post("/check")
+async def check_system_root(data: AIInput):
+    return await check_system(data)
+
+@app.get("/download/{report_id}")
+async def download_report_root(report_id: str):
+    return await download_report(report_id)
