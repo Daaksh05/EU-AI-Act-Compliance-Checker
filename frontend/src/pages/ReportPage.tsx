@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { ArrowLeft, Download, Loader, AlertCircle } from 'lucide-react';
 import complianceAPI from '../services/api';
 import { ComplianceResult } from '../services/api';

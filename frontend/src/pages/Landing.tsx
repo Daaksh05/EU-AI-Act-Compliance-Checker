@@ -1,4 +1,3 @@
-import React from 'react';
 import { CheckCircle, Zap, BarChart3 } from 'lucide-react';
 
 interface LandingProps {

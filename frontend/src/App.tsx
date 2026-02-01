@@ -1,5 +1,4 @@
 import './index.css';
-import React from 'react';
 import { useState } from 'react';
 import { Landing } from './pages/Landing';
 import { InputForm } from './pages/InputForm';
