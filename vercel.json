@@ -1,17 +1,12 @@
 {
-  "outputDirectory": "dist",
+  "buildCommand": "cd frontend && npm install && npm run build",
+  "outputDirectory": "frontend/dist",
   "git": {
     "deploymentEnabled": {
       "main": true,
       "master": true
     }
   },
-  "redirects": [
-    {
-      "source": "/api/:path*",
-      "destination": "/api/:path*"
-    }
-  ],
   "rewrites": [
     {
       "source": "/api/check",
@@ -19,7 +14,7 @@
     },
     {
       "source": "/api/download/:report_id",
-      "destination": "/api/download/:report_id"
+      "destination": "/api/download"
     }
   ]
 }
