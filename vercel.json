@@ -9,12 +9,8 @@
   },
   "rewrites": [
     {
-      "source": "/api/check",
+      "source": "/api/(.*)",
       "destination": "/api/check"
-    },
-    {
-      "source": "/api/download/:report_id",
-      "destination": "/api/download"
     }
   ]
 }
