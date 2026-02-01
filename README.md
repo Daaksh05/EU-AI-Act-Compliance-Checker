@@ -8,6 +8,8 @@
 
 **Automated Legal Risk Assessment for Artificial Intelligence Systems**
 
+🚀 **Live Demo:** [Check Compliance Now](https://eu-ai-act-compliance-checker-daaksh05s-projects.vercel.app)
+
 An automated web-based system that evaluates whether AI applications comply with EU AI Act regulations. The system accepts AI system descriptions as input, classifies risk levels, validates regulatory obligations, and generates structured compliance reports in PDF format.
 
 ## 🎯 Key Features
@@ -109,18 +111,24 @@ print(f"Compliance Status: {report['status']}")
 
 ```
 EU-AI-Act-Compliance-Checker/
-├── app.py                      # FastAPI application entry point
-├── compliance_engine.py        # Core compliance evaluation logic
-├── risk_classifier.py          # Risk categorization module
-├── report_generator.py         # PDF report generation
+├── api/                        # Vercel Serverless Functions (Python)
+├── src/                        # React Frontend Source
+├── backend_logic/              # Core Compliance Engine Logic
+├── rules/                      # Legal requirements database (YAML)
+├── index.html                  # Frontend Entry Point
+├── package.json                # Node.js dependencies & scripts
 ├── requirements.txt            # Python dependencies
-├── rules/
-│   └── eu_ai_rules.yaml       # Legal requirements database
-├── CITATION.cff               # Citation metadata
-├── .zenodo.json              # Zenodo metadata
-├── LICENSE                    # MIT License
-└── README.md                  # This file
+├── vercel.json                 # Vercel Deployment Configuration
+├── CITATION.cff                # Citation metadata
+└── README.md                   # This file
 ```
+
+## ☁️ Deployment
+
+The application is optimized for **Vercel** with a full-stack configuration:
+- **Frontend**: React + Vite (Static Hosting)
+- **Backend**: FastAPI (Serverless Functions)
+- **Deployment**: Automatic CI/CD via GitHub
 
 ## 🔬 Research Context
 
@@ -134,11 +142,10 @@ The research proposes extending static compliance checking to adaptive, context-
 
 ## 📊 Technology Stack
 
-| Component | Technology |
-|-----------|-----------|
+| Frontend Framework | React + Vite |
 | Backend Framework | FastAPI |
-| API Server | Uvicorn |
-| Programming Language | Python 3.8+ |
+| API Server | Vercel Serverless |
+| Programming Language | Python 3.12+ & TypeScript |
 | Rules Storage | YAML |
 | Report Generation | ReportLab |
 | API Documentation | Swagger/OpenAPI |
