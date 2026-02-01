@@ -1,0 +1,11 @@
+INFO:     Will watch for changes in these directories: ['/Users/daakshayani/Desktop/EU-AI-Regula/eu-ai-act-compliance-engine']
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [6389] using StatReload
+INFO:     Started server process [6557]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:49352 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49356 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49410 - "OPTIONS /check HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49410 - "POST /check HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49414 - "GET /download/report_063bf97d-0901-44f7-9e95-69187fd50c2e HTTP/1.1" 200 OK
