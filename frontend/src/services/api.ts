@@ -23,7 +23,7 @@ class ComplianceAPI {
   private client: AxiosInstance;
 
   constructor() {
-    const baseURL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
+    const baseURL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000';
     
     this.client = axios.create({
       baseURL,
@@ -36,7 +36,7 @@ class ComplianceAPI {
 
   async checkCompliance(input: AISystemInput): Promise<CheckResponse> {
     try {
-      const response = await this.client.post('/check', input);
+      const response = await this.client.post('/api/check', input);
       return response.data;
     } catch (error) {
       if (axios.isAxiosError(error)) {
@@ -52,7 +52,7 @@ class ComplianceAPI {
 
   async downloadReport(reportId: string): Promise<Blob> {
     try {
-      const response = await this.client.get(`/download/${reportId}`, {
+      const response = await this.client.get(`/api/download/${reportId}`, {
         responseType: 'blob',
       });
       return response.data;
@@ -68,8 +68,8 @@ class ComplianceAPI {
   }
 
   getReportUrl(reportId: string): string {
-    const baseURL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
-    return `${baseURL}/download/${reportId}`;
+    const baseURL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000';
+    return `${baseURL}/api/download/${reportId}`;
   }
 }
 
