@@ -16,6 +16,11 @@ except ImportError:
 
 app = FastAPI()
 
+@app.get("/api")
+async def root():
+    return {"status": "ok", "message": "EU AI Act Compliance API is running"}
+
+
 # Enable CORS for frontend
 app.add_middleware(
     CORSMiddleware,
@@ -124,7 +129,9 @@ def generate_pdf_report(description: str, result: dict) -> str:
 
 @app.post("/api/check")
 async def check_system(data: AIInput):
+    print(f"Checking compliance for: {data.description[:50]}...")
     result = analyze_ai_system(data.description)
+
     pdf_path = generate_pdf_report(data.description, result)
     report_id = os.path.basename(pdf_path).replace(".pdf", "")
     REPORT_STORE[report_id] = pdf_path
