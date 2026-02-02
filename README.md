@@ -8,7 +8,7 @@
 
 **Automated Legal Risk Assessment for Artificial Intelligence Systems**
 
-🚀 **Live Demo:** [Check Compliance Now](https://eu-ai-act-compliance-checker-daaksh05s-projects.vercel.app)
+🚀 **Live Demo:** [Check Compliance Now](https://eu-ai-act-compliance-checker-n2us7s793-daaksh05s-projects.vercel.app)
 
 An automated web-based system that evaluates whether AI applications comply with EU AI Act regulations. The system accepts AI system descriptions as input, classifies risk levels, validates regulatory obligations, and generates structured compliance reports in PDF format.
 
@@ -112,9 +112,9 @@ print(f"Compliance Status: {report['status']}")
 ```
 EU-AI-Act-Compliance-Checker/
 ├── api/                        # Vercel Serverless Functions (Python)
-├── src/                        # React Frontend Source
-├── backend_logic/              # Core Compliance Engine Logic
-├── rules/                      # Legal requirements database (YAML)
+├── src/                        # Core Compliance Engine Logic (Python)
+├── rules/                      # Legal requirements database (YAML/JSON)
+├── public/                     # Static assets
 ├── index.html                  # Frontend Entry Point
 ├── package.json                # Node.js dependencies & scripts
 ├── requirements.txt            # Python dependencies

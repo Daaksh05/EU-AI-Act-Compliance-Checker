@@ -39,16 +39,13 @@ echo -e "${GREEN}✓ Node.js is installed ($(node --version))${NC}"
 echo ""
 echo "📦 Installing dependencies..."
 
-# Install frontend dependencies
-cd frontend
-echo "Installing frontend dependencies..."
+# Install dependencies
+echo "Installing dependencies..."
 npm install
 
 echo ""
-echo "🔨 Building frontend..."
+echo "🔨 Building project..."
 npm run build
-
-cd ..
 
 echo ""
 echo -e "${GREEN}✓ Build successful!${NC}"
@@ -60,9 +57,8 @@ echo "📁 Verifying deployment configuration..."
 files_to_check=(
     "vercel.json"
     ".vercelignore"
-    "frontend/.env.example"
-    "frontend/.env.production"
-    "api/check.py"
+    "api/index.py"
+    "package.json"
 )
 
 for file in "${files_to_check[@]}"; do
@@ -91,8 +87,8 @@ echo "3. Environment Variables (set in Vercel dashboard):"
 echo "   □ VITE_API_BASE_URL=https://your-domain.vercel.app"
 echo ""
 echo "4. Project Settings (verify in Vercel dashboard):"
-echo "   □ Build Command: cd frontend && npm install && npm run build"
-echo "   □ Output Directory: frontend/dist"
+echo "   □ Build Command: npm run build"
+echo "   □ Output Directory: dist"
 echo "   □ Install Command: (leave empty)"
 echo ""
 echo "5. Testing:"

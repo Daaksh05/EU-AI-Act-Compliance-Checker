@@ -16,61 +16,40 @@ eu-ai-act-compliance-engine/
 │   ├── vercel.json                  # Vercel deployment configuration
 │   ├── .vercelignore                # Files to ignore during deployment
 │   ├── requirements.txt             # Python dependencies
-│   └── package.json                 # Root package config (if applicable)
+│   ├── package.json                 # Frontend dependencies & scripts
+│   ├── tsconfig.json                # TypeScript config
+│   └── vite.config.ts               # Vite build configuration
 │
 ├── 🎨 Frontend (React + TypeScript + Vite)
-│   ├── frontend/
-│   │   ├── src/
-│   │   │   ├── components/          # React components
-│   │   │   ├── pages/               # Page components
-│   │   │   ├── services/            # API client (api.ts)
-│   │   │   ├── App.tsx              # Main app component
-│   │   │   └── main.tsx             # Entry point
-│   │   │
-│   │   ├── dist/                    # Built output (created by build)
-│   │   ├── public/                  # Static assets
-│   │   ├── .env.example             # Environment variables template
-│   │   ├── .env.production          # Production environment config
-│   │   ├── package.json             # Dependencies & scripts
-│   │   ├── vite.config.ts           # Vite build configuration
-│   │   ├── tailwind.config.js       # Tailwind CSS config
-│   │   └── tsconfig.json            # TypeScript config
-│   │
-│   └── Built for: /frontend/dist
+│   ├── src/                         # React components & pages
+│   ├── public/                      # Static assets
+│   ├── index.html                   # Frontend entry point
+│   └── dist/                        # Built output (created by build)
 │
 ├── 🐍 Backend (Python + FastAPI)
 │   ├── api/
-│   │   ├── check.py                 # Main API handler
+│   │   ├── index.py                 # Main API handler
 │   │   └── __init__.py              # Package marker
 │   │
-│   ├── src/
-│   │   ├── compliance_engine.py     # Core compliance logic
-│   │   ├── llm_bias_tester.py       # LLM bias testing
-│   │   ├── risk_classifier.py       # Risk classification
-│   │   ├── report_generator.py      # Report generation
-│   │   ├── metadata_extractor.py    # Metadata extraction
-│   │   └── main.py                  # Main logic entry point
+│   ├── backend_logic/               # Core compliance logic
+│   │   ├── compliance_engine.py
+│   │   ├── llm_bias_tester.py
+│   │   ├── risk_classifier.py
+│   │   ├── report_generator.py
+│   │   └── ...
 │   │
-│   ├── rules/
-│   │   ├── eu_ai_rules.json         # EU AI Act rules database
-│   │   └── high_risk_rules.yaml     # High-risk rules
+│   ├── rules/                       # Compliance rules (JSON/YAML)
 │   │
 │   └── Deployed as: Vercel Serverless Functions
 │
 ├── 📚 Documentation
-│   ├── VERCEL_DEPLOYMENT.md         # Detailed deployment guide
-│   ├── QUICK_START_VERCEL.md        # Quick 5-minute guide
-│   ├── DEPLOYMENT_CHECKLIST.md      # Pre & post-deployment checklist
-│   ├── docs/                        # Architecture & methodology
-│   ├── README.md                    # Project overview
-│   └── CHANGELOG.md                 # Version history
+│   ├── VERCEL_DEPLOYMENT.md
+│   ├── QUICK_START_VERCEL.md
+│   ├── DEPLOYMENT_CHECKLIST.md
+│   └── README.md
 │
-├── 🔧 Deployment Scripts
-│   └── deploy-vercel.sh             # Setup & verification script
-│
-└── 📂 Other
-    ├── reports/                     # Generated PDF reports (local dev only)
-    └── .git/                        # Git repository
+└── 🔧 Deployment Scripts
+    └── deploy-vercel.sh
 ```
 
 ## How Vercel Handles This
@@ -79,21 +58,21 @@ eu-ai-act-compliance-engine/
 
 ```
 vercel.json build command:
-→ cd frontend && npm install && npm run build
+→ npm install && npm run build
 
 Output:
-→ frontend/dist/ (static files)
+→ dist/ (static files)
 
 Routing:
-→ Static files served from frontend/dist/
-→ All /api/* routes served by api/check.py
+→ Static files served from dist/
+→ All /api/* routes served by api/index.py
 ```
 
 ### API Routes
 
 All Python API requests go through `/api/` routes:
-- `POST /api/check` → handled by `api/check.py` → `check_system()`
-- `GET /api/download/{report_id}` → handled by `api/check.py` → `download_report()`
+- `POST /api/check` → handled by `api/index.py` → `check_system()`
+- `GET /api/download/{report_id}` → handled by `api/index.py` → `download_report()`
 
 ### Environment Variables
 
@@ -105,12 +84,10 @@ VITE_API_BASE_URL = API base URL (set in Vercel dashboard)
 ## File Modifications for Vercel
 
 ### Files Changed
-1. **vercel.json** - NEW: Deployment configuration
-2. **.vercelignore** - NEW: Exclude files from deployment
-3. **api/check.py** - NEW: FastAPI app structured for serverless
-4. **frontend/.env.production** - NEW: Production environment file
-5. **frontend/src/services/api.ts** - MODIFIED: Updated API endpoints to use `/api/*`
-6. **frontend/package.json** - MODIFIED: Added type-check script
+1. **vercel.json** - Updated for root build
+2. **.vercelignore** - Updated for root build
+3. **api/index.py** - FastAPI app for serverless
+4. **package.json** - Added type-check script
 
 ### Files Unchanged (No Breaking Changes)
 - ✅ app.py (original local development file)
@@ -122,8 +99,8 @@ VITE_API_BASE_URL = API base URL (set in Vercel dashboard)
 
 | Endpoint | Local Dev | Vercel |
 |----------|-----------|--------|
-| Check compliance | `http://localhost:8000/check` | `https://your-domain.vercel.app/api/check` |
-| Download report | `http://localhost:8000/download/{id}` | `https://your-domain.vercel.app/api/download/{id}` |
+| Check compliance | `http://localhost:3000/api/check` | `https://your-domain.vercel.app/api/check` |
+| Download report | `http://localhost:3000/api/download/{id}` | `https://your-domain.vercel.app/api/download/{id}` |
 
 The frontend `api.ts` automatically uses `/api/*` routes.
 
@@ -199,7 +176,7 @@ cd frontend && npm run dev
 ### API Returns 404
 1. Verify endpoint is `/api/check`, not `/check`
 2. Check `VITE_API_BASE_URL` is set correctly
-3. Ensure Python code in `api/check.py` is correct
+3. Ensure Python code in `api/index.py` is correct
 4. Check function logs for Python errors
 
 ### Frontend Can't Connect

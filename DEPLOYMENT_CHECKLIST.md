@@ -21,9 +21,10 @@
 ## Configuration
 
 - [ ] Build command set: `cd frontend && npm install && npm run build`
-- [ ] Output directory set: `frontend/dist`
-- [ ] Environment variables added:
-  - [ ] `VITE_API_BASE_URL` = your Vercel domain
+- [ ] Output directory set: `dist`
+- [ ] Install command: `npm install` (or leave empty for automatic)
+- [ ] Build command: `npm run build`
+- [ ] Environment Variables: `VITE_API_BASE_URL` set to production domain
 - [ ] `.vercelignore` file present and configured
 - [ ] `vercel.json` present and valid
 

@@ -47,6 +47,7 @@ git push -u origin main
 3. **Configure Project**
    - **Project Name**: `eu-ai-act-compliance-engine` (or your choice)
    - **Framework Preset**: Select "Other" (monorepo)
+   - **Root Directory**: Leave blank (the project root)
    - Leave other settings as defaults
 
 4. **Set Environment Variables**

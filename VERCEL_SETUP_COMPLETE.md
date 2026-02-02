@@ -7,34 +7,26 @@ Your EU AI Act Compliance Engine is now **fully configured for Vercel deployment
 ### 1. **Deployment Configuration Files** ✓
 - **`vercel.json`** - Vercel-specific configuration
   - Build command configured
-  - Output directory set to `frontend/dist`
+  - Output directory set to `dist`
   - API route rewrites for `/api/*`
   
 - **`.vercelignore`** - Files to exclude from deployment
   - Node modules, Git, Python cache, etc.
 
 ### 2. **Backend API Setup** ✓
-- **`api/check.py`** - FastAPI app structured for Vercel Serverless Functions
+- **`api/index.py`** - FastAPI app structured for Vercel Serverless Functions
   - Handles `POST /api/check` endpoint
   - Handles `GET /api/download/{report_id}` endpoint
-  - Uses `/tmp` for temporary PDF storage
+  - Uses `/tmp/reports` for temporary PDF storage
   - Proper CORS configuration for frontend
 
 - **`api/__init__.py`** - Python package marker
 
 ### 3. **Frontend Configuration** ✓
-- **Updated `frontend/src/services/api.ts`**
+- **Updated `src/services/api.ts`**
   - Changed API endpoints from `/check` → `/api/check`
   - Changed download URL from `/download` → `/api/download`
-  - Updated default API base URL from `localhost:8000` → `localhost:3000`
-
-- **`frontend/.env.example`** - Updated with new API configuration
-
-- **`frontend/.env.production`** - Production environment setup
-  - Automatically detects Vercel URL at build time
-
-- **Updated `frontend/package.json`**
-  - Added TypeScript type checking to build process
+  - Updated default API base URL to use root `/api`
 
 ### 4. **Documentation** ✓
 - **`QUICK_START_VERCEL.md`** - 5-minute deployment guide
@@ -82,7 +74,7 @@ Visit `https://your-project-name.vercel.app` and test the compliance checker!
 | Frontend | React + TypeScript | Static files → Vercel CDN |
 | API | Python FastAPI | Serverless Functions |
 | Database | None (in-memory) | State lost per request* |
-| Files | PDFs | Temporary (/tmp) storage |
+| Files | PDFs | Temporary (/tmp/reports) storage |
 
 *For production, consider adding persistent storage (AWS S3, etc.)
 
@@ -109,9 +101,8 @@ Vercel Edge (CDN)
 ### Files Created
 - `vercel.json` - Deployment config
 - `.vercelignore` - Deployment ignore rules
-- `api/check.py` - Serverless API handler
+- `api/index.py` - Serverless API handler
 - `api/__init__.py` - Package marker
-- `frontend/.env.production` - Production env config
 - `QUICK_START_VERCEL.md` - Quick guide
 - `VERCEL_DEPLOYMENT.md` - Full documentation
 - `DEPLOYMENT_CHECKLIST.md` - Checklist
@@ -119,9 +110,8 @@ Vercel Edge (CDN)
 - `deploy-vercel.sh` - Setup script
 
 ### Files Modified
-- `frontend/src/services/api.ts` - Updated endpoints to `/api/*`
-- `frontend/package.json` - Added type-check script
-- `frontend/.env.example` - Updated for new setup
+- `src/services/api.ts` - Updated endpoints to `/api/*`
+- `package.json` - Added type-check script
 
 ### Files Unchanged (No Breaking Changes)
 - ✅ All Python source code in `src/`
@@ -134,8 +124,6 @@ Vercel Edge (CDN)
 
 ### Development (Local)
 ```bash
-cd frontend
-echo "VITE_API_BASE_URL=http://localhost:3000" > .env.local
 npm run dev
 ```
 

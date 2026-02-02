@@ -28,14 +28,14 @@ git push -u origin main
 4. Configure project settings:
    - **Project Name**: `eu-ai-act-compliance-engine`
    - **Framework Preset**: `Other` (monorepo with frontend and Python API)
-   - **Root Directory**: `.` (or leave blank)
+   - **Root Directory**: Leave blank (the project root)
 
 ### Step 3: Environment Variables
 
 Set the following environment variables in your Vercel project settings:
 
 ```
-VITE_API_BASE_URL=https://your-project-name.vercel.app
+VITE_API_BASE_URL=https://eu-ai-act-compliance-checker-n2us7s793-daaksh05s-projects.vercel.app
 ```
 
 Or set it during the deployment wizard.
@@ -44,8 +44,8 @@ Or set it during the deployment wizard.
 
 Ensure the following are configured in Vercel:
 
-- **Build Command**: `cd frontend && npm install && npm run build`
-- **Output Directory**: `frontend/dist`
+- **Build Command**: `npm install && npm run build`
+- **Output Directory**: `dist`
 - **Install Command**: (Leave empty - Vercel handles this)
 
 These are already configured in `vercel.json`.
@@ -62,34 +62,29 @@ These are already configured in `vercel.json`.
 .
 ├── vercel.json              (Vercel configuration)
 ├── .vercelignore            (Files to ignore during deployment)
-├── frontend/                (React frontend)
-│   ├── src/
-│   ├── package.json
-│   ├── vite.config.ts
-│   ├── .env.example
-│   ├── .env.production
-│   └── dist/               (Built output)
-├── api/                    (Serverless API routes)
-│   └── check.py           (Python API endpoint)
-├── src/                    (Python backend logic)
-│   ├── compliance_engine.py
-│   ├── llm_bias_tester.py
-│   ├── risk_classifier.py
-│   └── ...
-├── rules/                  (Configuration files)
-└── requirements.txt        (Python dependencies)
+├── package.json             (Frontend dependencies & scripts)
+├── tsconfig.json            (TypeScript configuration)
+├── vite.config.ts           (Vite configuration)
+├── index.html               (Frontend entry point)
+├── src/                     (TypeScript/React frontend source)
+├── public/                  (Static assets)
+├── api/                     (Serverless API routes)
+│   └── index.py            (Python API endpoint)
+├── backend_logic/           (Python backend logic)
+├── rules/                   (Configuration files)
+└── requirements.txt         (Python dependencies)
 ```
 
 ## How It Works
 
 ### Frontend
 - Built with Vite/React and deployed as static files
-- Served from `frontend/dist`
+- Served from `dist`
 - Automatically rebuilt on every git push
 
 ### API (Backend)
 - Python code runs as Vercel Serverless Functions
-- Entry point: `/api/check.py`
+- Entry point: `/api/index.py`
 - Endpoints:
   - `POST /api/check` - Analyze AI system compliance
   - `GET /api/download/{report_id}` - Download PDF report
@@ -127,7 +122,7 @@ After first deployment, update the `VITE_API_BASE_URL` in Vercel project setting
 
 ### API Errors
 - Check Vercel **Function Logs** for Python errors
-- Ensure `api/check.py` is correct
+- Ensure `api/index.py` is correct
 - Verify CORS headers are set properly
 
 ### Frontend Issues
