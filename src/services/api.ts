@@ -57,13 +57,27 @@ class ComplianceAPI {
   }
 
   async register(email: string, password: string): Promise<AuthResponse> {
-    const response = await this.client.post('/api/register', { email, password });
-    return response.data;
+    try {
+      const response = await this.client.post('/api/register', { email, password });
+      return response.data;
+    } catch (error) {
+      if (axios.isAxiosError(error) && error.response) {
+        throw new Error(error.response.data.detail || error.message);
+      }
+      throw error;
+    }
   }
 
   async login(email: string, password: string): Promise<AuthResponse> {
-    const response = await this.client.post('/api/login', { email, password });
-    return response.data;
+    try {
+      const response = await this.client.post('/api/login', { email, password });
+      return response.data;
+    } catch (error) {
+      if (axios.isAxiosError(error) && error.response) {
+        throw new Error(error.response.data.detail || error.message);
+      }
+      throw error;
+    }
   }
 
   async checkCompliance(input: AISystemInput): Promise<CheckResponse> {
