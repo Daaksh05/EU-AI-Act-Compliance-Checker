@@ -9,18 +9,13 @@ SECRET_KEY = os.getenv("JWT_SECRET_KEY", "b39b56ed7f7448e89e02377a3d90f230e70473
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24 * 7  # 1 week
 
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+# Using pbkdf2_sha256 to avoid bcrypt's 72-byte limit
+pwd_context = CryptContext(schemes=["pbkdf2_sha256"], deprecated="auto")
 
 def verify_password(plain_password, hashed_password):
     return pwd_context.verify(plain_password, hashed_password)
 
 def get_password_hash(password):
-    # bcrypt allows max 72 bytes. We must ensure we don't exceed this.
-    # If password bytes > 72, execute safe truncation.
-    password_bytes = password.encode('utf-8')
-    if len(password_bytes) > 72:
-        # Truncate to 72 bytes, but decode/encode to ensure we don't split a multi-byte char
-        password = password_bytes[:72].decode('utf-8', 'ignore')
     return pwd_context.hash(password)
 
 def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):
