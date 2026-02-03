@@ -8,7 +8,7 @@ import { AuthPage } from './pages/AuthPage';
 import { HistoryPage } from './pages/HistoryPage';
 import { ComplianceResult, ReportRecord } from './services/api';
 import { useAuth } from './context/AuthContext';
-import { User, LogIn, History, LogOut, ShieldCheck } from 'lucide-react';
+import { User, History, LogOut, ShieldCheck } from 'lucide-react';
 
 export type PageType = 'landing' | 'input' | 'results' | 'report' | 'auth' | 'history';
 
