@@ -8,7 +8,7 @@
 
 **Automated Legal Risk Assessment for Artificial Intelligence Systems**
 
-🚀 **Live Demo:** [Check Compliance Now](https://eu-ai-act-compliance-checker-qxp49v6aa-daaksh05s-projects.vercel.app)
+🚀 **Live Demo:** [Check Compliance Now](https://eu-ai-act-compliance-checker-1404otfta-daaksh05s-projects.vercel.app/)
 
 
 An automated web-based system that evaluates whether AI applications comply with EU AI Act regulations. The system accepts AI system descriptions as input, classifies risk levels, validates regulatory obligations, and generates structured compliance reports in PDF format.
