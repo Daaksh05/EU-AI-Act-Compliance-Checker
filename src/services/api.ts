@@ -19,6 +19,19 @@ export interface CheckResponse {
   download_url: string;
 }
 
+export interface ReportRecord {
+  id: string;
+  user_id: number;
+  description: string;
+  analysis_result: ComplianceResult;
+  created_at: string;
+}
+
+export interface AuthResponse {
+  access_token: string;
+  token_type: string;
+}
+
 class ComplianceAPI {
   private client: AxiosInstance;
 
@@ -32,6 +45,25 @@ class ComplianceAPI {
         'Content-Type': 'application/json',
       },
     });
+
+    // Add interceptor to include token in requests
+    this.client.interceptors.request.use((config) => {
+      const token = localStorage.getItem('auth_token');
+      if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+      }
+      return config;
+    });
+  }
+
+  async register(email: string, password: string): Promise<AuthResponse> {
+    const response = await this.client.post('/api/register', { email, password });
+    return response.data;
+  }
+
+  async login(email: string, password: string): Promise<AuthResponse> {
+    const response = await this.client.post('/api/login', { email, password });
+    return response.data;
   }
 
   async checkCompliance(input: AISystemInput): Promise<CheckResponse> {
@@ -45,6 +77,18 @@ class ComplianceAPI {
           error.message ||
           'Failed to check compliance'
         );
+      }
+      throw error;
+    }
+  }
+
+  async getReports(): Promise<ReportRecord[]> {
+    try {
+      const response = await this.client.get('/api/reports');
+      return response.data;
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        throw new Error(error.response?.data?.detail || 'Failed to fetch reports');
       }
       throw error;
     }
