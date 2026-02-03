@@ -30,10 +30,17 @@ except ImportError:
     from ..models import Base, User, Report
     from ..auth import get_password_hash, verify_password, create_access_token, decode_access_token
 
-# Database Setup - Using /tmp for Vercel serverless environment
-# IMPORTANT: This is ephemeral and will reset periodically.
-DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:////tmp/compliance.db")
-engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
+# Database Setup
+# Check for Vercel/Neon Postgres environment variable
+DATABASE_URL = os.getenv("DATABASE_URL") or os.getenv("POSTGRES_URL")
+if DATABASE_URL:
+    # SQLAlchemy requires 'postgresql://', but some providers return 'postgres://'
+    DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://")
+else:
+    # Fallback to SQLite for local development
+    DATABASE_URL = "sqlite:////tmp/compliance.db" if os.getenv("VERCEL") else "sqlite:///./compliance.db"
+
+engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base.metadata.create_all(bind=engine)
 

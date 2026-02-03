@@ -38,9 +38,14 @@ Set the following environment variables in your Vercel project settings:
 VITE_API_BASE_URL=https://eu-ai-act-compliance-checker-n2us7s793-daaksh05s-projects.vercel.app
 ```
 
-Or set it during the deployment wizard.
+### Step 4: Database Setup (Critical for Persistence)
 
-### Step 4: Build Settings
+By default, the app uses ephemeral local storage. For production:
+
+1. Follow the instructions in [DATABASE_SETUP.md](./DATABASE_SETUP.md) to create a Vercel Postgres or Supabase database.
+2. Ensure the `POSTGRES_URL` environment variable is set in Vercel.
+
+### Step 5: Build Settings
 
 Ensure the following are configured in Vercel:
 
@@ -50,7 +55,7 @@ Ensure the following are configured in Vercel:
 
 These are already configured in `vercel.json`.
 
-### Step 5: Deploy
+### Step 6: Deploy
 
 1. Click **Deploy** button in Vercel
 2. Wait for the build to complete (typically 2-5 minutes)
