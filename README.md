@@ -8,7 +8,7 @@
 
 **Automated Legal Risk Assessment for Artificial Intelligence Systems**
 
-🚀 **Live Demo:** [Check Compliance Now](https://eu-ai-act-compliance-checker-n2us7s793-daaksh05s-projects.vercel.app)
+🚀 **Live Demo:** [Check Compliance Now](https://eu-ai-act-compliance-checker-qxp49v6aa-daaksh05s-projects.vercel.app)
 
 > [!NOTE]
 > If the link asks for a login, ensure Deployment Protection is disabled in the Vercel Dashboard.
