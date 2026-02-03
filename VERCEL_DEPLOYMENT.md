@@ -135,13 +135,16 @@ After first deployment, update the `VITE_API_BASE_URL` in Vercel project setting
 - Consider integrating cloud storage (AWS S3, etc.) for persistent storage
 - Serverless functions have limited disk space
 
-## Performance Optimization
+## Making Your Deployment Public
 
-### For Better Performance:
-1. Enable Vercel Analytics
-2. Use Vercel's automatic image optimization
-3. Consider caching strategy for PDF reports
-4. Implement request deduplication
+By default, Vercel may enable "Deployment Protection" which requires a login to view your site. To make your link public:
+
+1. Go to your **Project Settings** in the Vercel Dashboard.
+2. Navigate to **Deployment Protection**.
+3. Disable **Vercel Authentication** for both **Production** and **Preview** environments.
+4. Click **Save**.
+
+Your application will now be accessible to anyone with the link.
 
 ### Limits to Be Aware Of:
 - Serverless function timeout: 10 seconds (Hobby) to 60 seconds (Pro)

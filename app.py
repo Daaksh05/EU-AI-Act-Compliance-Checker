@@ -9,7 +9,7 @@ import uuid
 import os
 from textwrap import wrap
 
-from src.compliance_engine import analyze_ai_system
+from backend_logic.compliance_engine import analyze_ai_system
 
 app = FastAPI(
     title="EU AI Act Compliance Checker",
@@ -122,6 +122,7 @@ def generate_pdf_report(description: str, result: dict) -> str:
     return file_path
 
 
+@app.post("/api/check")
 @app.post("/check")
 def check_system(data: AIInput):
     result = analyze_ai_system(data.description)
@@ -138,6 +139,7 @@ def check_system(data: AIInput):
     }
 
 
+@app.get("/api/download/{report_id}")
 @app.get("/download/{report_id}")
 def download_report(report_id: str):
     pdf_path = REPORT_STORE.get(report_id)

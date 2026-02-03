@@ -3,20 +3,21 @@ import { ArrowLeft, Send, AlertCircle, Loader } from 'lucide-react';
 import complianceAPI, { ComplianceResult } from '../services/api';
 
 interface InputFormProps {
+  initialDescription?: string;
   onSuccess: (description: string, result: ComplianceResult, reportId: string) => void;
   onBack: () => void;
   onLoading: (loading: boolean) => void;
   onError: (error: string) => void;
 }
 
-export function InputForm({ onSuccess, onBack, onLoading, onError }: InputFormProps) {
-  const [description, setDescription] = useState('');
+export function InputForm({ initialDescription = '', onSuccess, onBack, onLoading, onError }: InputFormProps) {
+  const [description, setDescription] = useState(initialDescription);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!description.trim()) {
       setError('Please describe your AI system');
       return;

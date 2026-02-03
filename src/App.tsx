@@ -15,6 +15,7 @@ export interface AppState {
   reportId: string | null;
   error: string | null;
   loading: boolean;
+  prefilledDescription?: string;
 }
 
 function App() {
@@ -31,8 +32,8 @@ function App() {
     setAppState(prev => ({ ...prev, currentPage: page, error: null }));
   };
 
-  const startCompliance = () => {
-    navigateTo('input');
+  const startCompliance = (prefill?: string) => {
+    setAppState(prev => ({ ...prev, currentPage: 'input', prefilledDescription: prefill }));
   };
 
   const submitCompliance = (description: string, result: ComplianceResult, reportId: string) => {
@@ -64,10 +65,11 @@ function App() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-eu-light-blue to-white">
       {appState.currentPage === 'landing' && (
-        <Landing onStart={startCompliance} />
+        <Landing onStart={() => startCompliance()} onSelectCaseStudy={(desc) => startCompliance(desc)} />
       )}
       {appState.currentPage === 'input' && (
-        <InputForm 
+        <InputForm
+          initialDescription={appState.prefilledDescription}
           onSuccess={submitCompliance}
           onBack={() => navigateTo('landing')}
           onLoading={(loading) => setAppState(prev => ({ ...prev, loading }))}
@@ -75,7 +77,7 @@ function App() {
         />
       )}
       {appState.currentPage === 'results' && appState.complianceResult && (
-        <ResultsDashboard 
+        <ResultsDashboard
           description={appState.systemDescription}
           result={appState.complianceResult}
           reportId={appState.reportId}
@@ -84,7 +86,7 @@ function App() {
         />
       )}
       {appState.currentPage === 'report' && appState.reportId && (
-        <ReportPage 
+        <ReportPage
           reportId={appState.reportId}
           result={appState.complianceResult}
           onBack={() => navigateTo('results')}

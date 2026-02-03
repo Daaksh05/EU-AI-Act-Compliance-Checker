@@ -10,6 +10,9 @@
 
 🚀 **Live Demo:** [Check Compliance Now](https://eu-ai-act-compliance-checker-n2us7s793-daaksh05s-projects.vercel.app)
 
+> [!NOTE]
+> If the link asks for a login, ensure Deployment Protection is disabled in the Vercel Dashboard.
+
 An automated web-based system that evaluates whether AI applications comply with EU AI Act regulations. The system accepts AI system descriptions as input, classifies risk levels, validates regulatory obligations, and generates structured compliance reports in PDF format.
 
 ## 🎯 Key Features

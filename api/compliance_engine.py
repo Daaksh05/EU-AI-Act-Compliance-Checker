@@ -5,7 +5,7 @@ def analyze_ai_system(description: str) -> dict:
     articles = []
     score = 0
 
-    if "recruitment" in description_lower or "hiring" in description_lower:
+    if any(kw in description_lower for kw in ["recruitment", "hiring", "screening", "selection", "job interview"]):
         risk_factors.append("Employment decision-making")
         articles.append("Article 6 – Classification of High-Risk AI Systems")
         score += 30
