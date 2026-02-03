@@ -1,6 +1,6 @@
 from fastapi import FastAPI, HTTPException, Depends, Header
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel, EmailStr, Field
 from reportlab.lib.pagesizes import A4
 from reportlab.pdfgen import canvas
 from fastapi.responses import FileResponse
@@ -57,11 +57,11 @@ class AIInput(BaseModel):
 
 class UserCreate(BaseModel):
     email: EmailStr
-    password: str
+    password: str = Field(..., min_length=6, max_length=64)
 
 class UserLogin(BaseModel):
     email: EmailStr
-    password: str
+    password: str = Field(..., max_length=64)
 
 class Token(BaseModel):
     access_token: str
