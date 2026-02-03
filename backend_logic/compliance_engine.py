@@ -31,14 +31,14 @@ def analyze_ai_system(description: str) -> dict:
 
     # 2. Check for High-Risk AI Systems (Article 6 & Annex III)
     high_risk_patterns = {
-        "Biometrics": ["biometric identification", "emotion recognition"],
-        "Critical Infrastructure": ["critical infrastructure", "traffic control", "water supply", "electricity", "gas"],
-        "Education": ["education", "vocational training", "grading", "student admission"],
-        "Employment": ["recruitment", "hiring", "screening applications", "promotion", "termination", "monitoring workers"],
-        "Public Services": ["credit scoring", "social security", "welfare", "public housing", "firefighters", "emergency"],
-        "Law Enforcement": ["law enforcement", "polygraph", "crime prediction", "profiling"],
-        "Migration": ["migration", "asylum", "border control", "visa application"],
-        "Justice": ["judicial", "legal interpretation", "court"]
+        "Biometrics": ["biometric", "recognition", "identification", "facial", "voice analysis", "fingerprint", "retina", "verify identity"],
+        "Critical Infrastructure": ["critical infrastructure", "traffic", "water", "electricity", "gas", "power grid", "digital infrastructure", "heating"],
+        "Education": ["education", "vocational", "training", "grading", "student", "admission", "exam", "test scoring", "school", "university"],
+        "Employment": ["recruitment", "hiring", "screening", "application", "promotion", "termination", "monitoring", "worker", "employee", "candidate", "resume", "cv", "interview", "job"],
+        "Public Services": ["credit", "social security", "welfare", "public housing", "benefits", "eligibility", "insurance", "loan", "mortgage", "banking"],
+        "Law Enforcement": ["law enforcement", "police", "crime", "profiling", "surveillance", "predictive policing", "risk assessment", "reoffending"],
+        "Migration": ["migration", "asylum", "border", "visa", "passport", "immigration"],
+        "Justice": ["judicial", "court", "legal", "lawyer", "judge", "sentencing", "parole"]
     }
 
     # Check for High Risk matches
